@@ -14,7 +14,6 @@ const typeDefs = apolloServer.gql`
 const resolvers = {
     Query: {
         books: () => {
-            console.log('books!')
             return [{ __typename: 'Book', title: 'Hey', author: 'lalaley' }]
         },
     },

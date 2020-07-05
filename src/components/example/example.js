@@ -1,18 +1,19 @@
 import React from 'react'
 import GetBooks from './get-books.graphql'
+import GetServerTime from './get-server-time.graphql'
 import {useQuery} from "@apollo/react-hooks";
 
-function Data({data}) {
-    return (
-        <div>page-data: {JSON.stringify(data)}</div>
-    )
-}
-
 export default function Example() {
-    const {data} = useQuery(GetBooks)
+    const {data: booksData} = useQuery(GetBooks)
+    const {data: timeData, refetch: refetchTime} = useQuery(GetServerTime)
     return (
         <>
-            <Data data={data}/>
+            <div>Books: {JSON.stringify(booksData)}</div>
+            <div>Time: {JSON.stringify(timeData)}</div>
+            <button onClick={() => {
+                console.log('refetch!')
+                refetchTime()
+            }}>Refetch time</button>
         </>
     )
 }

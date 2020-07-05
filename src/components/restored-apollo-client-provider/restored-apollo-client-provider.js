@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {ApolloClient, ApolloProvider, getApolloContext, InMemoryCache} from "@apollo/client";
+import { createHttpLink } from "apollo-link-http";
 
 let client
 
@@ -10,7 +11,8 @@ export function RestoredApolloClientProvider({apolloState, children}) {
     }
     if (!client) {
         client =  new ApolloClient({
-            cache: new InMemoryCache().restore(apolloState)
+            cache: new InMemoryCache().restore(apolloState),
+            link: createHttpLink({uri: '/graphql'})
         })
     }
     return (

@@ -3,13 +3,14 @@ import Head from "next/head";
 import Example from "../../components/example/example";
 import {RestoredApolloClientProvider} from "../../components/restored-apollo-client-provider/restored-apollo-client-provider";
 
-export default function ExamplePage({apolloState}) {
+export default function ExamplePage({apolloState, ...rest}) {
     return (
         <>
             <Head>
                 <title>Example Page</title>
             </Head>
             <RestoredApolloClientProvider apolloState={apolloState}>
+                <div>Page params: {JSON.stringify(rest)}</div>
                 <Example/>
             </RestoredApolloClientProvider>
         </>
