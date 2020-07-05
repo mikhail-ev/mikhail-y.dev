@@ -8,7 +8,7 @@ const port = 3000
 const app = next({ dev: true })
 
 const preparePath = (path) => {
-    if (path.endsWith('/')) {
+    if (path !== '/' && path.endsWith('/')) {
         return path.slice(0, -1)
     }
     return path
