@@ -2,7 +2,7 @@ const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
 const {graphqlExpress} = require('apollo-server-express/dist/expressApollo')
-const schema = require('./graphql/schema')
+const schema = require('./graphql/schema.js')
 
 const port = 3000
 const app = next({ dev: true })

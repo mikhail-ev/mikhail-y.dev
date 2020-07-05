@@ -1,5 +1,4 @@
 import Head from "next/head";
-import RehydratedApolloClientProvider from "../components/rehydrated-apollo-client-provider/rehydrated-apollo-client-provider";
 
 function MyApp({Component, pageProps}) {
     return (
@@ -10,9 +9,7 @@ function MyApp({Component, pageProps}) {
                 <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png"/>
                 <link rel="manifest" href="/public/site.webmanifest"/>
             </Head>
-            {/*<RehydratedApolloClientProvider>*/}
-                <Component {...pageProps} />
-            {/*</RehydratedApolloClientProvider>*/}
+            <Component {...pageProps} />
         </>
     )
 }

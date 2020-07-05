@@ -1,57 +1,44 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import Head from "next/head";
-import {generateApolloStateScript} from "../../helpers/head";
 import Example from "../../components/example/example";
-import {createApolloClient} from "../../components/rehydrated-apollo-client-provider/rehydrated-apollo-client-provider";
-import {ApolloProvider, useQuery, getApolloContext} from "@apollo/client";
-import GetBooks from "../../components/example/get-books.graphql";
+import {RestoredApolloClientProvider} from "../../components/restored-apollo-client-provider/restored-apollo-client-provider";
 
-export default function MyPage({apolloStringifiedState, message}) {
-    console.log('Page message: ', message)
-    // const {client} = useContext(getApolloContext())
-    const {data, loading} = useQuery(GetBooks)
+export default function ExamplePage({apolloState}) {
     return (
         <>
             <Head>
                 <title>Example Page</title>
-                {generateApolloStateScript(apolloStringifiedState)}
             </Head>
-            <div>
-                Here's an example page {JSON.stringify(data)}
-            </div>
+            <RestoredApolloClientProvider apolloState={apolloState}>
+                <Example/>
+            </RestoredApolloClientProvider>
         </>
     )
 }
 
-export async function getStaticProps(context) {
-    console.log('getStaticProps')
-    const { ApolloLink } = await import('apollo-link')
-    const {SchemaLink} = await import('@apollo/link-schema')
-    const {createHttpLink} = await import('apollo-link-http')
-    const schema = await import('../../graphql/schema')
-    const link1 = new SchemaLink({ schema })
-    // const link1 = createHttpLink({ uri: "/graphql" })
-    const client = createApolloClient(link1)
-    const {default: Page} = await import('./example')
-
-    const {getMarkupFromTree} = await import('@apollo/react-ssr')
-    await getMarkupFromTree({
-        tree: (
-            <ApolloProvider client={client}>
-                <Page message={'hey'}/>
-            </ApolloProvider>
-        ),
-    }).catch(e => console.log(e))
-
-    console.log('finished markup')
-
-
-    const extraction = client.extract()
-    console.log(JSON.stringify(extraction))
+export async function getStaticProps() {
+    const {getApolloStateFromComponent} = await import('../../helpers/ssr.js')
+    // const {InMemoryCache, ApolloClient} = await import('@apollo/client')
+    // const {SchemaLink} = await import('@apollo/link-schema')
+    // const schema = await import('../../graphql/schema.js')
+    // const client =  new ApolloClient({
+    //     cache: new InMemoryCache(),
+    //     ssrMode: true,
+    //     link: new SchemaLink({schema: schema.default}),
+    // })
+    // const {ApolloProvider} = await import('@apollo/client')
+    // const {getMarkupFromTree} = await import('@apollo/react-ssr')
+    // await getMarkupFromTree({
+    //     tree: (
+    //         <ApolloProvider client={client}>
+    //             <Example/>
+    //         </ApolloProvider>
+    //     )
+    // }).catch(e => console.log(e))
 
     return {
         props: {
-            apolloStringifiedState: JSON.stringify(extraction)
+            apolloState: await getApolloStateFromComponent(Example)
         }
     }
 }
