@@ -3,12 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "next export",
-    "build:watch": "npx babel src/server.js --out-dir server-build --presets @babel/preset-react --watch",
-    "serve": "npx nodemon server-build/server.js --watch server-build"
+    "start": "npx nodemon src/server.js"
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-rc.9",
