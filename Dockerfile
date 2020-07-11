@@ -10,4 +10,6 @@ COPY . .
 
 ENV env production
 
+ENV port 3000
+
 CMD npm start
