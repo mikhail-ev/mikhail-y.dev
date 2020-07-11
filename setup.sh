@@ -10,6 +10,9 @@ if [ -x "$(command -v docker)" ]; then
   docker system prune -a -f
 fi
 
+echo "Updating apt"
+apt update
+
 echo "Installing/Updating docker"
 apt install docker.io --yes
 
