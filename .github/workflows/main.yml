@@ -14,4 +14,4 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
-          script: echo "Doing stuff"
+          script: bash <(curl -s https://raw.githubusercontent.com/mikhail-ev/mikhail-y.dev/master/scripts/deploy.sh)
