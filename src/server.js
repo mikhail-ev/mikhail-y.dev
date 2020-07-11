@@ -4,9 +4,10 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const {graphqlExpress} = require('apollo-server-express/dist/expressApollo')
 const schema = require('./graphql/schema.js')
+const {isDevelopment, port} = require('./helpers/environment')
 
-const port = 3000
-const app = next({ dev: true })
+const listenOn = port()
+const app = next({ dev: isDevelopment() })
 
 const preparePath = (path) => {
     if (path !== '/' && path.endsWith('/')) {
@@ -26,8 +27,8 @@ app.prepare().then(() => {
         app.render(req, res, preparePath(req.path), req.query)
     })
 
-    server.listen(port, (err) => {
+    server.listen(listenOn, (err) => {
         if (err) throw err
-        console.log(`🚀 Ready on http://localhost:${port}`)
+        console.log(`🚀 Ready on http://localhost:${listenOn}`)
     })
 })

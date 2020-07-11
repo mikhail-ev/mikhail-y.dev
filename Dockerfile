@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . .
 
+ENV env production
+
 CMD npm start
