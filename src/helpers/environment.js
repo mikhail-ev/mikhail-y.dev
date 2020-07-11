@@ -1,4 +1,4 @@
-const isDevelopment = () => process.env !== 'production'
+const isDevelopment = () => process.env.ENV !== 'production'
 const port = () => parseInt(process.env.PORT)
 
 module.exports = {

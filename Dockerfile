@@ -8,8 +8,10 @@ RUN npm install
 
 COPY . .
 
-ENV env production
+ENV ENV production
 
-ENV port 3000
+ENV PORT 3000
+
+RUN npm run build
 
 CMD npm start
