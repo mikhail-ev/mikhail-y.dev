@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "start": "npx nodemon src/server.js"
+    "start": "npx nodemon src/server.js --watch src/server.js --watch src/server"
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-rc.9",
@@ -26,6 +26,9 @@
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "nodemon": "^2.0.4"
+    "@types/react": "^16.9.42",
+    "apollo": "^2.29.1",
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.6"
   }
 }

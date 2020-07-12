@@ -18,7 +18,7 @@ export default function ExamplePage({apolloState, ...rest}) {
 }
 
 export async function getStaticProps() {
-    const {getApolloStateFromComponent} = await import('../../helpers/ssr.js')
+    const {getApolloStateFromComponent} = await import('../../server/helpers/ssr.js')
     return {
         props: {
             apolloState: await getApolloStateFromComponent(ExamplePage)

@@ -9,7 +9,6 @@ const typeDefs = apolloServer.gql`
 const resolvers = {
     Query: {
         serverTime: () => {
-            console.log('Getting time!')
             return new Date().toISOString()
         },
     },
