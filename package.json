@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "start": "npx nodemon src/server.js --watch src/server.js --watch src/server"
+    "start": "npx nodemon src/server/server.js --watch src/server"
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-rc.9",

@@ -4,7 +4,7 @@ import {useQuery} from "@apollo/client";
 import css from './build-time.module.css'
 
 const BuildTime = () => {
-    const {data} = useQuery(GetSeverTime.)
+    const {data} = useQuery(GetSeverTime)
     return (
         <div className={css.content}>
             <div>The Application was build:</div>
