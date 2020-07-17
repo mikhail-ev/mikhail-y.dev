@@ -4,6 +4,7 @@ const typeDefs = apolloServer.gql`
     type Book {
         title: String
         author: String
+        dateOfBirth: String
     }
     
     type Query {

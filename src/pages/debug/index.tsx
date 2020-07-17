@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from "next/head";
-import {RestoredApolloClientProvider} from "../../components/restored-apollo-client-provider/restored-apollo-client-provider";
-import BuildTime from "../../components/build-time/build-time";
+import {RestoredApolloClientProvider} from "../../components/RestoredApolloClientProvider/RestoredApolloClientProvider";
+import BuildTime from "../../components/BuildTime/BuildTime";
 
 export default function DebugPage({apolloState}) {
     return (

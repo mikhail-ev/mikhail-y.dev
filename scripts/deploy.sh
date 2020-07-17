@@ -14,6 +14,10 @@ rm -rf /app
 echo "Cloning repository"
 git clone https://github.com/mikhail-ev/mikhail-y.dev.git /app
 
+echo "Copying certificates"
+cp /etc/letsencrypt/live/mikhail-y.dev/fullchain.pem /app/server.crt
+cp /etc/letsencrypt/live/mikhail-y.dev/privkey.pem /app/server.key
+
 echo "Building image"
 docker build /app -t app
 

@@ -1,5 +1,6 @@
 module.exports = {
     client: {
-        service: 'mikhail-y-graphql-service'
+        name: 'mikhail-y-graphql-service',
+        excludes: ['src/server/**']
     },
 };

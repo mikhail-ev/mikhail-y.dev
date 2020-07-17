@@ -12,6 +12,7 @@ export function RestoredApolloClientProvider({apolloState, children}) {
     if (!client) {
         client =  new ApolloClient({
             cache: new InMemoryCache().restore(apolloState),
+            // @ts-ignore
             link: createHttpLink({uri: '/graphql'})
         })
     }
