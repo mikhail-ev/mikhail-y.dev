@@ -29,7 +29,7 @@ else
 fi
 
 echo "Running image"
-docker run -d -p 80:3000 app
+docker run -d -p 80:3000 -p 443:3001 app
 
 echo "Pruning docker data"
 docker system prune -a -f
