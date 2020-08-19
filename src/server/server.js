@@ -6,7 +6,7 @@ const path = require('path')
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const {graphqlExpress} = require('apollo-server-express/dist/expressApollo')
-const schema = require('./graphql/schema.js')
+const schema = require('../graphql/schema')
 const {isDevelopment, port, httpsPort} = require('./helpers/environment')
 const {preparePath} = require('./helpers/path')
 

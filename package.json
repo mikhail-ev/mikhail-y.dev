@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "start": "npx nodemon src/server/server.js --watch src/server",
-    "generate:schema": "apollo client:download-schema src/server/graphql/schema.graphql --endpoint http://localhost:3000/graphql",
+    "generate:schema": "apollo client:download-schema src/graphql/schema.graphql --endpoint http://localhost:3000/graphql",
     "generate:types": "apollo client:codegen . --localSchemaFile=src/server/graphql/schema.graphql --target=typescript --globalTypesFile=src/@types/globalGraphqlTypes.d.ts --tsFileExtension=d.ts"
   },
   "dependencies": {

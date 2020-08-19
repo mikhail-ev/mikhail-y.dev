@@ -1,7 +1,7 @@
 export async function getApolloStateFromComponent(Component) {
     const {InMemoryCache, ApolloClient} = await import('@apollo/client')
     const {SchemaLink} = await import('@apollo/link-schema')
-    const schema = await import('../graphql/schema.js')
+    const schema = await import('../../graphql/schema.js')
     const client =  new ApolloClient({
         cache: new InMemoryCache(),
         ssrMode: true,
